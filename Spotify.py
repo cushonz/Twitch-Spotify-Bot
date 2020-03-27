@@ -50,7 +50,7 @@ def addToPlaylist(pl, track_id):
 
 # Main
 # This clause allows a command line override of playlist name
-if len(sys.argv) > 1:
+'''if len(sys.argv) > 1:
     playlist_name = sys.argv[1]
 else:
     playlist_name = playlistPrefix + Utility.getTimestamp()
@@ -75,4 +75,4 @@ while input_active:
             searchArray.append(songUri(element))
         addToPlaylist(playlist['id'], searchArray)
         print(searchArray)
-        print('Song added')
+        print('Song added')'''
