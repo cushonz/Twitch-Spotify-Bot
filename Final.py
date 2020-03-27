@@ -38,8 +38,9 @@ def commandsNew(MSG, sock, user):
         elo = RankData[3]
         sendToChat("Current Rank: " + rank + " " + league + " " + str(elo) + " LP", sock)
     elif MSG[0] == "!sr":
-        song = OMSG.replace("!sr ","")
-        Spotify.addToPlaylist(Spotify.pl,Spotify.songUri(song))
+        song = OMSG.replace("!sr ", "")
+        print(Spotify.songUri(song))
+        #Spotify.addToPlaylist(Spotify.pl, Spotify.songUri(song))
         sendToChat(song.upper() + " added to playlist!", sock)
     elif MSG[0] in answ:
         MSG = MSG.lower()
