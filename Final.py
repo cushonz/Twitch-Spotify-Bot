@@ -41,7 +41,7 @@ def commandsNew(MSG, sock, user):
         song = OMSG.replace("!sr ", "")
         uri = Spotify.songUri(song)
         uri = uri.split(":")
-        Spotify.addToPlaylist(Spotify.pl, uri[2])
+        Spotify.addToPlaylist(uri[2])
         sendToChat(song.upper() + " added to playlist!", sock)
     elif MSG[0] in answ:
         MSG = MSG.lower()
