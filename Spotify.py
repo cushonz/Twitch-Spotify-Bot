@@ -44,7 +44,7 @@ def songUri(findMe):
     return result['tracks']['items'][0]['uri']
 
 
-def addToPlaylist(pl, track_id):
+def addToPlaylist(track_id):
     return sp.user_playlist_add_tracks(cred['userName'], pl, track_id)
 
 
