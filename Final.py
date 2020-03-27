@@ -3,7 +3,7 @@ import socket
 import TwitchBot
 import time
 import random
-import Spotify.py
+import Spotify
 
 
 # CREATES A CONNECTION TO TWITCH IRC SERVERS
