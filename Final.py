@@ -42,6 +42,7 @@ def commandsNew(MSG, sock, user):
         uri = Spotify.songUri(song)
         uri = uri.split(":")
         print(uri)
+        print(uri[2])
         #Spotify.addToPlaylist(uri[2])
         sendToChat(song.upper() + " added to playlist!", sock)
     elif MSG[0] in answ:
