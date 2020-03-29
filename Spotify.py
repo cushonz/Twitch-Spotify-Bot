@@ -45,9 +45,12 @@ def songUri(findMe):
     result = sp.search(findMe)
     return result['tracks']['items'][0]['uri']
 
-def addToPlaylist(track_id):
-    return sp.user_playlist_add_tracks(cred['userName'], pl, track_id)
-
+def addToPlaylist(searchTerm):
+    inputArray=processInput(searchTerm)
+    searchArray = []
+    for element in inputArray:
+        searchArray.append(songUri(element))
+    return sp.user_playlist_add_tracks(cred['userName'], pl, searchArray)
 
 # Main
 cred = getCred()
