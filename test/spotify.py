@@ -17,7 +17,7 @@ while input_active:
     if searchTerm.lower() == '!quit':
         input_active = False
     else:
-        inputArray = sp.Utility.processInput(sp.searchDividers, sp.searchRemoves, searchTerm)
+        inputArray = sp.processInput(searchTerm)
         searchArray = []
         for element in inputArray:
             searchArray.append(sp.songUri(element))
