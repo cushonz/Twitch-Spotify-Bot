@@ -42,9 +42,9 @@ def commandsNew(MSG, sock, user):
         Spotify.addToPlaylist(song)
         sendToChat(song.upper() + " added to playlist!", sock)
     elif MSG[0] in answ:
-        MSG = MSG.lower()
+        MSGS = MSG[0].lower()
         sock.send(bytes(
-            "PRIVMSG " + channel + " :" + answ[MSG] + "\r\n",
+            "PRIVMSG " + channel + " :" + answ[MSGS] + "\r\n",
             "UTF-8"))
 
 
