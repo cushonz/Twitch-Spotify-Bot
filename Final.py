@@ -26,7 +26,7 @@ def commandsNew(MSG, sock, user):
     if MSG[0] == "!lurk":
         reply = random.randint(0, 3)
         sock.send(bytes(
-            "PRIVMSG " + channel + " :" + lurk[reply] + "\r\n",
+            "PRIVMSG " + channel + " :" + lurk[reply] + " @"+user + "\r\n",
             "UTF-8"))
     elif MSG[0] == "!dice":
         roll = random.randint(1, 6)
@@ -40,9 +40,9 @@ def commandsNew(MSG, sock, user):
     elif MSG[0] == "!sr":
         song = OMSG.replace("!sr ", "")
         if Spotify.addToPlaylist(song) != None:
-            sendToChat(song.upper() + " added to playlist!", sock)
+            sendToChat(song.capitalize() + " added to playlist! Thanks for the suggestion @"+user, sock)
         else:
-            sendToChat("I couldn't find " + song.upper() + " on Spotify!",sock)
+            sendToChat("I couldn't find " + song.upper() + " on Spotify! Sorry @"+user,sock)
     elif MSG[0] in answ:
         MSGS = MSG[0].lower()
         sock.send(bytes(
@@ -62,9 +62,9 @@ def listen(sock):
         time.sleep(2)
         msg = sock.recv(2048).decode('UTF-8')
         data = msg.split(":")
-        print(msg)
         # prevents index out of range error when twitch pings the bot
         if len(data) >= 3:
+            print(data[1]+ ":" + data[2])
             data[2] = data[2].strip()
             name = data[1].split("!")
             name = name[0]
@@ -72,7 +72,6 @@ def listen(sock):
         # Replies to twitches PING with PONG in order to stay connected
         elif len(data) < 3:
             server.send(bytes('PONG :tmi.twitch.tv\r\n', 'utf-8'))
-
 
 # CALLING FUNCTIONS
 server = CreateConnection()

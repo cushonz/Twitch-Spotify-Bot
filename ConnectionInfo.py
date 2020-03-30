@@ -24,4 +24,5 @@ answ['!discord'] = "Join our community and be the first to get updated on the st
 answ['socials'] = "Come follow me on Twitter! @ZaddySquid"
 
 answ['!summname'] = "Add me on League baby! Summoner Name: ZaddySquid"
+answ['!playlist'] = "Glad you're liking the community playlist, feel free to follow it on spotify! https://open.spotify.com/playlist/01UYLs2Pb5phx9eLLE7MGL"
 

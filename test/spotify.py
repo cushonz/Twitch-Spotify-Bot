@@ -13,6 +13,8 @@ while input_active:
     searchTerm = input("Enter song to search for: ")[:sp.searchLength]
     if searchTerm.lower() == '!quit':
         input_active = False
+    elif searchTerm.lower() == '!song':
+        print(sp.current_playback())
     else:
         newSong = sp.addToPlaylist(searchTerm)
         if newSong != None:

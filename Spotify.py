@@ -56,9 +56,14 @@ def addToPlaylist(searchTerm):
         if ThisUri != "":
             searchArray.append(ThisUri)
     if len(searchArray) > 0:
+        sp.user_playlist_remove_all_occurrences_of_tracks(cred['userName'],pl,searchArray)
         return sp.user_playlist_add_tracks(cred['userName'], pl, searchArray)
     else :
         return None
+
+
+
+
 
 # Main
 cred = getCred()
