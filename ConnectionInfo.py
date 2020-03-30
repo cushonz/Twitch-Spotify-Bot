@@ -17,9 +17,9 @@ answ = {}
 answ['!help'] = "Command List: !rank: Returns current Elo in League of Legends,  !lurk: "
 'Lets me know you\'re lurkin     ,!summname: Returns my summoner name so you '
 'can add me on League of Legends,    !dice: Rolls a virtual die and returns '
-'the value to chat.   !socials: Returns my social medias!'
+'the value to chat.   !socials: Returns my social medias! !sr [Song name] adds your song request to the community playlist'
 
-answ['!discord'] = "Join our community and be the first to get update! [Link]"
+answ['!discord'] = "Join our community and be the first to get updated on the stream! https://discord.gg/4zPrvmN"
 
 answ['socials'] = "Come follow me on Twitter! @ZaddySquid"
 
