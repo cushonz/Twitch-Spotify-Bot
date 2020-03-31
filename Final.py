@@ -4,7 +4,7 @@ import TwitchBot
 import time
 import random
 import Spotify
-
+import pprint
 
 # CREATES A CONNECTION TO TWITCH IRC SERVERS
 def CreateConnection():
@@ -22,6 +22,7 @@ lurk = ["YOOOO THANKS FOR THE LURK MAN!", "You do be lurkin doe", "thanks for th
 
 def commandsNew(MSG, sock, user):
     OMSG = MSG.lower()
+    MSG = MSG.lower()
     MSG = MSG.split(" ")
     if MSG[0] == "!lurk":
         reply = random.randint(0, 3)
@@ -43,6 +44,9 @@ def commandsNew(MSG, sock, user):
             sendToChat(song.capitalize() + " added to playlist! Thanks for the suggestion @"+user, sock)
         else:
             sendToChat("I couldn't find " + song.upper() + " on Spotify! Sorry @"+user,sock)
+    elif MSG[0] == "!song":
+        trackInfo = Spotify.currentSongTitle()
+        sendToChat("Currently Playing: " + trackInfo,sock)
     elif MSG[0] in answ:
         MSGS = MSG[0].lower()
         sock.send(bytes(

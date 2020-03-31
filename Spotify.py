@@ -1,9 +1,10 @@
 import os, sys, pprint
 import spotipy
 import spotipy.util as util
+import pprint
 
 # User variables
-scope = "playlist-modify-public"
+scope = "playlist-modify-public user-read-currently-playing"
 pl = "01UYLs2Pb5phx9eLLE7MGL"  #REPLACE this playlistId with the correct one.
 
 # Operational variables
@@ -48,6 +49,13 @@ def songUri(findMe):
     else:
         return result['tracks']['items'][0]['uri']
 
+def currentSongTitle():
+    info = sp.currently_playing()
+    track = info['item']['name']
+    artist = info['item']['artists'][0]['name']
+    return track + " by " + artist
+
+
 def addToPlaylist(searchTerm):
     inputArray=processInput(searchTerm)
     searchArray = []
@@ -56,6 +64,7 @@ def addToPlaylist(searchTerm):
         if ThisUri != "":
             searchArray.append(ThisUri)
     if len(searchArray) > 0:
+        #pprint.pprint(sp.currently_playing())
         sp.user_playlist_remove_all_occurrences_of_tracks(cred['userName'],pl,searchArray)
         return sp.user_playlist_add_tracks(cred['userName'], pl, searchArray)
     else :

@@ -1,4 +1,5 @@
 import os,sys,inspect
+import pprint
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
@@ -14,7 +15,7 @@ while input_active:
     if searchTerm.lower() == '!quit':
         input_active = False
     elif searchTerm.lower() == '!song':
-        print(sp.current_playback())
+        pprint.pprint(sp.sp.currently_playing())
     else:
         newSong = sp.addToPlaylist(searchTerm)
         if newSong != None:
