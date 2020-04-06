@@ -4,7 +4,22 @@ import TwitchBot
 import time
 import random
 import Spotify
-import pprint
+import requests
+import json
+from datetime import datetime,timedelta
+
+headers = {"Client-ID":'knyi2zb44wkzrbh0xqa312w5kq6mpu'}
+
+def upTime():
+    stream = requests.get("https://api.twitch.tv/helix/streams?user_login=zaddysquid", headers = headers)
+    streamJ = stream.json()
+    time = streamJ['data'][0]['started_at']
+    time = datetime.strptime(time,'%Y-%m-%dT%H:%M:%SZ')
+    compare = datetime.now()+timedelta(hours=7)
+    uptime = compare-time
+    print(uptime)
+    return uptime
+
 
 # CREATES A CONNECTION TO TWITCH IRC SERVERS
 def CreateConnection():
@@ -38,6 +53,11 @@ def commandsNew(MSG, sock, user):
         league = RankData[1]
         elo = RankData[3]
         sendToChat("Current Rank: " + rank + " " + league + " " + str(elo) + " LP", sock)
+    elif MSG[0] == "!uptime":
+        uptime = str(upTime())
+        hour = uptime[0]
+        minute = int(uptime[2])*10 + int(uptime[3])
+        sendToChat("Up time: "+str(hour)+" hours and "+str(minute)+" minutes!",sock)
     elif MSG[0] == "!sr":
         song = OMSG.replace("!sr ", "")
         if Spotify.addToPlaylist(song) != None:
